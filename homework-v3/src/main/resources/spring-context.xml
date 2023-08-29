@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="studentDao" class="com.aleksandrphilimonov.spring.dao.StudentDaoImpl"/>
+    <bean id="studentService" class="com.aleksandrphilimonov.spring.service.StudentServiceImpl">
+        <constructor-arg name="studentDao" ref="studentDao"/>
+        <constructor-arg name="consoleService" ref="consoleService" />
+    </bean>
+    <bean id="testQuestionDao" class="com.aleksandrphilimonov.spring.dao.TestQuestionDaoImpl">
+        <constructor-arg name="resource" value="/qna.csv"/>
+        <constructor-arg name="consoleService" ref="consoleService"/>
+    </bean>
+    <bean id="testQuestionService" class="com.aleksandrphilimonov.spring.service.TestQuestionServiceImpl">
+        <constructor-arg name="testQuestionDao" ref="testQuestionDao" />
+        <constructor-arg name="studentService" ref="studentService" />
+        <constructor-arg name="consoleService" ref="consoleService" />
+    </bean>
+    <bean id="consoleService" class="com.aleksandrphilimonov.spring.service.ConsoleServiceImpl"/>
+</beans>
