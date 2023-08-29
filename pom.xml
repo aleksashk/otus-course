@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>home-work1</module>
+        <module>homework-v1</module>
     </modules>
 
     <properties>
