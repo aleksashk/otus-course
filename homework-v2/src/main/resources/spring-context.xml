@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="csvMapper" class="com.fasterxml.jackson.dataformat.csv.CsvMapper"/>
+    <bean id="questionaryDao" class="com.aleksandrphilimonov.spring.dao.QuestionDaoSimple">
+        <constructor-arg name="resource" value="classpath:question.csv"/>
+        <constructor-arg name="csvMapper" ref="csvMapper"/>
+    </bean>
+    <bean id="personService" class="com.aleksandrphilimonov.spring.service.QuestionServiceImpl">
+        <constructor-arg name="dao" ref="questionaryDao"/>
+    </bean>
+    <bean id="questionary" class="com.aleksandrphilimonov.spring.service.QuestionaryServiceImpl"/>
+
+</beans>
